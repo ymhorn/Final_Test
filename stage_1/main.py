@@ -9,7 +9,7 @@ kafka = Produce()
 for file in main_path.iterdir():
     file_object = PathObject(file)
     json_builder = JsonBuilder(file_object)
-    # print(str(json_builder.json()['File_Path']))
     kafka.publish_message('meta_data',str(json_builder.json()))
+
 
 kafka.producer.flush()
