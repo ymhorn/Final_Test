@@ -10,14 +10,14 @@ class PathObject:
         return self.path.name
 
     def file_path(self):
-        return self.path
+        return str(self.path)
 
     def file_size(self):
         return os.stat(self.path).st_size
 
     def time_created(self):
-        return TimeConvert.time_converter(os.path.getctime(self.path))
+        return str(TimeConvert.time_converter(os.path.getctime(self.path)))
 
     def time_last_modified(self):
-        return TimeConvert.time_converter(os.path.getmtime(self.path))
+        return str(TimeConvert.time_converter(os.path.getmtime(self.path)))
 

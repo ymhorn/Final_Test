@@ -7,9 +7,9 @@ class JsonBuilder:
     def json(self):
         dict_info = {
             'File_Name' : self.path.file_name(),
-            'File_Path' : str(self.path.file_path()),
+            'File_Path' : self.path.file_path(),
             'File_Size' : self.path.file_size(),
-            'Time_Created' : str(self.path.time_created()),
-            'Time_Modified' : str(self.path.time_last_modified())
+            'Time_Created' : self.path.time_created(),
+            'Time_Modified' : self.path.time_last_modified()
         }
         return dict_info
