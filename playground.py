@@ -33,4 +33,20 @@ class Subscriber:
 
 a = Subscriber('meta_data')
 for message in a.consumer:
-    print(message.value)
+    print(message)
+
+# import checksumdir
+# a = checksumdir.dirhash(r"C:\Users\Yisroel Meir\Desktop\podcasts")
+# print(a)
+
+# from dirhash import dirhash
+#
+# a = dirhash(r"C:\Users\Yisroel Meir\Desktop\podcasts\download (4).wav","sha256")
+# print(a)
+
+# import hashlib
+#
+# with open(r"C:\Users\Yisroel Meir\Desktop\podcasts\download (4).wav", "rb") as file:
+#     digest = hashlib.file_digest(file , "sha256")
+#
+# print(digest.hexdigest())
