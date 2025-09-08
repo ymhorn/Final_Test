@@ -1,3 +1,4 @@
+
 from pathlib import Path
 import os
 from datetime import datetime
@@ -52,13 +53,43 @@ import json
 # print(digest.hexdigest())
 
 
-from pymongo import MongoClient
-from gridfs import GridFS
+# from pymongo import MongoClient
+# from gridfs import GridFS
+#
+# client = MongoClient('mongodb://localhost:27017/')
+# db = client['trial']
+# fs = GridFS(db)
+#
+# with open(r"C:\Users\Yisroel Meir\Desktop\podcasts\download (1).wav", 'rb') as audio_file:
+#     file_id = fs.put(audio_file, filename='audio.mp3', content_type='audio/mpeg')
+# print(f"Audio file stored with ID: {file_id}")
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['trial']
-fs = GridFS(db)
-
-with open(r"C:\Users\Yisroel Meir\Desktop\podcasts\download (1).wav", 'rb') as audio_file:
-    file_id = fs.put(audio_file, filename='audio.mp3', content_type='audio/mpeg')
-print(f"Audio file stored with ID: {file_id}")
+import logging
+from elasticsearch import Elasticsearch
+from datetime import datetime
+class Logger:
+    _logger = None
+    @classmethod
+    def get_logger(cls, name="meta_data_logging", es_host='http://localhost:9200',
+index="trial", level=logging.DEBUG):
+        if cls._logger:
+            return cls._logger
+        logger = logging.getLogger(name)
+        logger.setLevel(level)
+        if not logger.handlers:
+            es = Elasticsearch(es_host)
+            class ESHandler(logging.Handler):
+                def emit(self, record):
+                    try:
+                        es.index(index=index, document={
+                            "timestamp": datetime.utcnow().isoformat(),
+                            "level": record.levelname,
+                            "logger": record.name,
+                            "message": record.getMessage()
+                        })
+                    except Exception as e:
+                        print(f"ES log failed: {e}")
+            logger.addHandler(ESHandler())
+            logger.addHandler(logging.StreamHandler())
+        cls._logger = logger
+        return logger
