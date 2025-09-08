@@ -24,16 +24,16 @@ import json
 #     print(b)
 #     # print(time_converter(os.path.getctime(a)))
 
-class Subscriber:
-    def __init__(self,topic):
-        self.consumer = KafkaConsumer(topic,
-            value_deserializer=lambda m: json.loads(m.decode('ascii')),
-            bootstrap_servers=["localhost:9092"])
-
-
-a = Subscriber('meta_data')
-for message in a.consumer:
-    print(message)
+# class Subscriber:
+#     def __init__(self,topic):
+#         self.consumer = KafkaConsumer(topic,
+#             value_deserializer=lambda m: json.loads(m.decode('ascii')),
+#             bootstrap_servers=["localhost:9092"])
+#
+#
+# a = Subscriber('meta_data')
+# for message in a.consumer:
+#     print(message)
 
 # import checksumdir
 # a = checksumdir.dirhash(r"C:\Users\Yisroel Meir\Desktop\podcasts")
@@ -50,3 +50,15 @@ for message in a.consumer:
 #     digest = hashlib.file_digest(file , "sha256")
 #
 # print(digest.hexdigest())
+
+
+from pymongo import MongoClient
+from gridfs import GridFS
+
+client = MongoClient('mongodb://localhost:27017/')
+db = client['trial']
+fs = GridFS(db)
+
+with open(r"C:\Users\Yisroel Meir\Desktop\podcasts\download (1).wav", 'rb') as audio_file:
+    file_id = fs.put(audio_file, filename='audio.mp3', content_type='audio/mpeg')
+print(f"Audio file stored with ID: {file_id}")
