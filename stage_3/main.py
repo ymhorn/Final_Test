@@ -15,7 +15,7 @@ try:
     stt = SpeechToText()
     logger.info(f'Created an instance of Speech To Text')
 
-    for doc in scan(update_es.es, index=update_es.index, query={"query": {"match_all": {}}}):
+    for doc in scan(update_es.es, index=update_es.index, query={"query": {"match_all": {}}},request_timeout=10000,scroll='25m'):
         id = doc['_id']
         file_path = update_es.get_file_path(id)
         text = stt.convert_from_path(file_path)

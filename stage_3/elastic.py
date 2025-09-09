@@ -1,5 +1,4 @@
 from elasticsearch import Elasticsearch
-from elasticsearch.helpers import scan
 
 class UpdateElastic:
     def __init__(self,index):
