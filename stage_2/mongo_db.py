@@ -1,6 +1,5 @@
 import pymongo
 from gridfs import GridFS
-from stage_1.path_object import PathObject
 
 class Mongo:
     def __init__(self,database,collection):

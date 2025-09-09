@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from stage_1.time_converter import TimeConvert
+from time_converter import TimeConvert
 
 class PathObject:
     def __init__(self,path):
