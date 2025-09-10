@@ -3,7 +3,7 @@ from gridfs import GridFS
 
 class Mongo:
     def __init__(self,database,collection):
-        self.mongodb = pymongo.MongoClient("mongodb://localhost:27017")
+        self.mongodb = pymongo.MongoClient("mongodb://mongo:27017")
         self.db = self.mongodb[database]
         self.collection = collection
 

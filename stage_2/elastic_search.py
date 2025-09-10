@@ -2,7 +2,7 @@ from elasticsearch import Elasticsearch
 
 class ElasticSearch:
     def __init__(self):
-        self.es = Elasticsearch([{'scheme': 'http', 'host': 'localhost', 'port': 9200}])
+        self.es = Elasticsearch([{'scheme': 'http', 'host': 'elasticsearch', 'port': 9200}])
 
     def create_index(self,name,mapping = None):
         if not self.es.indices.exists(index=name):

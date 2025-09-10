@@ -2,7 +2,7 @@ from elasticsearch import Elasticsearch
 
 class UpdateElastic:
     def __init__(self,index):
-        self.es = Elasticsearch([{'scheme': 'http', 'host': 'localhost', 'port': 9200}])
+        self.es = Elasticsearch([{'scheme': 'http', 'host': 'elasticsearch', 'port': 9200}])
         self.index = index
 
     def update_doc(self, document, id=None, query=None):
