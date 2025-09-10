@@ -1,9 +1,9 @@
-from base64_decode import Decoder
-from percentage_calculater import PercentageCalculate
-from criminal import Criminal
-from count_words import CountWords
-from elastic import UpdateElastic
-from threat_level import ThreatLevel
+from stage_4.base64_decode import Decoder
+from stage_4.percentage_calculater import PercentageCalculate
+from stage_4.criminal import Criminal
+from stage_4.count_words import CountWords
+from stage_4.elastic import UpdateElastic
+from stage_4.threat_level import ThreatLevel
 import os
 from stage_log.logging_file import Logger
 from elasticsearch.helpers import scan

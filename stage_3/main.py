@@ -1,6 +1,6 @@
 from elasticsearch.helpers import scan
-from elastic import UpdateElastic
-from stt import SpeechToText
+from stage_3.elastic import UpdateElastic
+from stage_3.stt import SpeechToText
 import os
 from stage_log.logging_file import Logger
 

@@ -1,6 +1,6 @@
-from path_object import PathObject
-from json_info import JsonBuilder
-from kafka_publisher import Produce
+from stage_1.path_object import PathObject
+from stage_1.json_info import JsonBuilder
+from stage_1.kafka_publisher import Produce
 from pathlib import Path
 from stage_log.logging_file import Logger
 import os
